@@ -1,6 +1,6 @@
-package com.std.ec.config.security;
+package com.app.config.security;
 
-import com.std.ec.config.filter.AutorizacionFilter;
+import com.app.config.filter.AutorizacionFilter;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

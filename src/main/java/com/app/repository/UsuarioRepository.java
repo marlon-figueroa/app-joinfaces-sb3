@@ -1,6 +1,7 @@
-package com.std.ec.repository;
+package com.app.repository;
 
-import com.std.ec.model.entity.Usuario;
+import com.app.model.entity.Usuario;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.std.ec.handler;
+package com.app.handler;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

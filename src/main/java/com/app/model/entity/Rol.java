@@ -1,4 +1,4 @@
-package com.std.ec.model.entity;
+package com.app.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

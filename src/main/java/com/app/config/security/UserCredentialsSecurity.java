@@ -1,7 +1,7 @@
-package com.std.ec.config.security;
+package com.app.config.security;
 
-import com.std.ec.model.entity.Usuario;
-import com.std.ec.repository.UsuarioRepository;
+import com.app.model.entity.Usuario;
+import com.app.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

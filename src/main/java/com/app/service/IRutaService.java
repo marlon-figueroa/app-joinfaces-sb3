@@ -1,6 +1,6 @@
-package com.std.ec.service;
+package com.app.service;
 
-import com.std.ec.model.entity.Ruta;
+import com.app.model.entity.Ruta;
 
 import java.util.List;
 import java.util.Map;

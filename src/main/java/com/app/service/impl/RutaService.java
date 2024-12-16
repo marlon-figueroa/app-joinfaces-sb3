@@ -1,9 +1,9 @@
-package com.std.ec.service.impl;
+package com.app.service.impl;
 
-import com.std.ec.model.entity.Rol;
-import com.std.ec.model.entity.Ruta;
-import com.std.ec.repository.RutaRepository;
-import com.std.ec.service.IRutaService;
+import com.app.model.entity.Rol;
+import com.app.model.entity.Ruta;
+import com.app.repository.RutaRepository;
+import com.app.service.IRutaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

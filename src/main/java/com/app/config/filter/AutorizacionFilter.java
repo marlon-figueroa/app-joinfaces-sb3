@@ -1,6 +1,6 @@
-package com.std.ec.config.filter;
+package com.app.config.filter;
 
-import com.std.ec.service.IRutaService;
+import com.app.service.IRutaService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

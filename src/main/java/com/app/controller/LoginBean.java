@@ -1,4 +1,4 @@
-package com.std.ec.controller;
+package com.app.controller;
 
 import jakarta.faces.view.ViewScoped;
 import org.springframework.security.core.context.SecurityContextHolder;
