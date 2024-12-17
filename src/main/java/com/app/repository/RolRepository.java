@@ -1,10 +1,10 @@
 package com.app.repository;
 
-import com.app.model.entity.Rol;
-import com.app.model.entity.Usuario;
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.Optional;
+import com.app.model.entity.Rol;
 
 public interface RolRepository extends CrudRepository<Rol, Long> {
 

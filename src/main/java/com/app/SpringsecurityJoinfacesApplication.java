@@ -1,20 +1,26 @@
 package com.app;
 
-import com.app.model.entity.Rol;
-import com.app.model.entity.Usuario;
-import com.app.repository.RolRepository;
-import com.app.repository.UsuarioRepository;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.*;
+import com.app.model.entity.Rol;
+import com.app.model.entity.Usuario;
+import com.app.repository.RolRepository;
+import com.app.repository.UsuarioRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @SpringBootApplication
 public class SpringsecurityJoinfacesApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringsecurityJoinfacesApplication.class, args);
 	}
@@ -36,7 +42,7 @@ public class SpringsecurityJoinfacesApplication {
 						.password(passwordEncoder.encode("root2024"))
 						.roles(rolesArray)
 						.build();
-				System.out.println("Usuario creado: " + usrRepo.save(admin).getUsername());
+				log.info("Usuario creado: {}", usrRepo.save(admin).getUsername());
 			}
 
 			// [.] -> Crear usuario de prueba
@@ -51,8 +57,11 @@ public class SpringsecurityJoinfacesApplication {
 						.password(passwordEncoder.encode("test2025"))
 						.roles(rolesArray)
 						.build();
-				System.out.println("Usuario creado: " + usrRepo.save(admin).getUsername());
+				log.info("Usuario creado: {}", usrRepo.save(admin).getUsername());
 			}
+			
+			// [.]-> Generate secret
+			// LOGGER.info("Her secret is: {}",passwordEncoder.encode("admin"));
 
 		};
 	}

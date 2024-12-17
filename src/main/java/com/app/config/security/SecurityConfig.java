@@ -24,6 +24,7 @@ public class SecurityConfig {
 
     @Autowired
     private UserCredentialsSecurity userCredentialsSecurity;
+    
     @Autowired
     private AutorizacionFilter autorizacionFilter;
 
@@ -35,13 +36,13 @@ public class SecurityConfig {
 
     // para encriptar claves
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     // para validar la autenticacion del usuario a loguearse
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+    AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
         builder.userDetailsService(userCredentialsSecurity)
                 .passwordEncoder(passwordEncoder());
@@ -51,7 +52,7 @@ public class SecurityConfig {
 
     // de oconfiguracion con spring security
     @Bean
-    public SecurityFilterChain configure(HttpSecurity http, MvcRequestMatcher.Builder mvc) {
+    SecurityFilterChain configure(HttpSecurity http, MvcRequestMatcher.Builder mvc) {
         try {
             http.csrf(AbstractHttpConfigurer::disable);
             http.authorizeHttpRequests(authorize -> {

@@ -1,17 +1,25 @@
 package com.app.controller;
 
 import jakarta.faces.view.ViewScoped;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
+@Slf4j
 @Component("loginMB")
 @ViewScoped
 public class LoginBean implements Serializable {
 
-    public String getUserName(){
+	private static final long serialVersionUID = 1L;
+	
+	public String getUserName(){
+		
+		log.info("Llego a LoginBean ....");
+		
         // Obtiene los datos del usuario autenticado actualmente en el contexto de seguridad
         Object datoUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // Verifica si el objeto 'datoUser' es una instancia de UserDetails
