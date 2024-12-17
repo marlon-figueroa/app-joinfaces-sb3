@@ -28,32 +28,40 @@ public class AutorizacionFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-		log.debug("la URL solicitada");
-		String requestURI = request.getRequestURI();
-
-		log.debug("Cargar rutas y roles desde la base de datos");
-		Map<String, List<String>> mapaRutas = rutaService.getRutaRolMappings();
-
-		log.debug("Encontrar roles autorizados para la URL solicitad");
-		List<String> authRoles = mapaRutas.get(requestURI);
-		if (authRoles != null) {
-			log.debug("Verificar si el usuario autenticado tiene uno de los roles permitidos");
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-			if (authentication != null && authentication.isAuthenticated()) {
-				boolean accesoRol = authentication.getAuthorities().stream()
-						.anyMatch(grantedAuthority -> authRoles.contains(grantedAuthority.getAuthority()));
-				log.info("{} TIENE ACCESO A LA RUTA {}", accesoRol ? "SI": "NO", requestURI);
-				
-				if (!accesoRol) {
-					log.debug("Si no tiene permiso, redirigir a la página de acceso denegado");
-					request.getRequestDispatcher("/403.xhtml").forward(request, response);
-					return;
+		try {
+			log.debug("la URL solicitada");
+			String requestURI = request.getRequestURI();
+	
+			log.debug("Cargar rutas y roles desde la base de datos");
+			Map<String, List<String>> mapaRutas = rutaService.getRutaRolMappings();
+	
+			log.debug("Encontrar roles autorizados para la URL solicitad");
+			List<String> authRoles = mapaRutas.get(requestURI);
+			if (authRoles != null) {
+				log.debug("Verificar si el usuario autenticado tiene uno de los roles permitidos");
+				Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	
+				if (authentication != null && authentication.isAuthenticated()) {
+					boolean accesoRol = authentication.getAuthorities()
+							.stream()
+							.anyMatch(grantedAuthority -> authRoles.contains(grantedAuthority.getAuthority()));
+					
+					log.info("{} TIENE ACCESO A LA RUTA {}", accesoRol ? "SI": "NO", requestURI);
+					
+					if (!accesoRol) {
+						log.debug("Si no tiene permiso, redirigir a la página de acceso denegado");
+						request.getRequestDispatcher("/403.xhtml").forward(request, response);
+						return;
+					}
 				}
 			}
+	
+			filterChain.doFilter(request, response);
+		} catch(Throwable e ) {
+			log.error(e.getMessage());
+			log.error(e.getLocalizedMessage());
+			log.error(e.getCause().getMessage());
 		}
-
-		filterChain.doFilter(request, response);
 	}
 
 }

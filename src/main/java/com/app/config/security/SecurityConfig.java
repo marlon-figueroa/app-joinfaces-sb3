@@ -79,8 +79,7 @@ public class SecurityConfig {
                     //validacion de pagina 403
                     .exceptionHandling(ex -> ex.accessDeniedPage("/403.xhtml"))
                     //validacion de acceso de rutas y roles despues de loguearse
-                    .addFilterAfter(autorizacionFilter, UsernamePasswordAuthenticationFilter.class)
-            ;
+                    .addFilterAfter(autorizacionFilter, UsernamePasswordAuthenticationFilter.class);
             return http.build();
         } catch (Exception ex) {
             throw new BeanCreationException("Wrong spring security configuration", ex);
