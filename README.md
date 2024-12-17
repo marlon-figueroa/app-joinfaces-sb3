@@ -42,7 +42,7 @@ Puedes ver a detalle el proyecto directamente desde mi canal de YouTube [https:/
 
 ## Contribuciones
 
-¡Gracias por visitar este repositorio! Si te resulta útil, no olvides darle una ⭐ y compartirlo con otros desarrolladores. 😊
+¡Gracias por compartir este repositorio! Si te resulta útil, no olvides darle una ⭐ al creador **walterroseroec** y compartirlo con otros desarrolladores. 😊
 
 ¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar este proyecto, siéntete libre de abrir un issue o enviar un pull request.
 
